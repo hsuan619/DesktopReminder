@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AssistiveTouch 待辦與時間軸</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>任務清單</h1>
+    </header>
+
+    <!-- 日期選擇器 -->
+    <nav class="date-selector" id="date-selector">
+      <!-- 7 天的小按鈕將由 JS 動態生成 -->
+    </nav>
+    <!-- 動態提示區塊 (Next Task) -->
+    <section class="next-task-card" id="next-task-section">
+      <div class="next-task-header">
+        <span class="pulse-dot"></span>
+        <span class="next-label">下一個任務</span>
+      </div>
+      <div class="next-task-content" id="next-task-display">
+        <!-- 動態帶入 -->
+        無即將到來的任務
+      </div>
+    </section>
+
+    <!-- 時間軸與待辦事項切換標籤 -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="timeline">時間軸</button>
+      <button class="tab-btn" data-tab="todo">待辦清單</button>
+    </nav>
+
+    <!-- 內容區域 -->
+    <main class="content-area">
+      <!-- 時間軸視圖 -->
+      <section id="timeline-view" class="view-section active">
+        <div class="timeline-container" id="timeline-list">
+          <!-- 任務項目由 JS 動態生成 -->
+        </div>
+      </section>
+
+      <!-- 待辦清單視圖 -->
+      <section id="todo-view" class="view-section">
+        <div class="todo-list" id="task-list">
+          <!-- 任務項目由 JS 動態生成 -->
+        </div>
+      </section>
+    </main>
+
+    <!-- 新增任務區域 (固定底部) -->
+    <footer class="add-task-footer">
+      <form id="add-task-form" class="add-form">
+        <input type="text" id="task-input" placeholder="新增任務..." required autocomplete="off">
+        <input type="time" id="task-time" class="time-input">
+        <button type="submit" class="add-btn">＋</button>
+      </form>
+    </footer>
+  </div>
+  <script src="sidepanel.js"></script>
+</body>
+
+</html>

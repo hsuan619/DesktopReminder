@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "AssistiveTouch (Productivity Side Panel)",
+  "version": "1.0.1",
+  "description": "Your side-panel assistant with a daily timeline, to-do list, and dynamic task tracking.",
+  "permissions": [
+    "sidePanel",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_title": "Open AssistiveTouch Panel"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

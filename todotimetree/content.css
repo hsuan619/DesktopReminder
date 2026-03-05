@@ -1,0 +1,95 @@
+/* AssistiveTouch 懸浮按鈕樣式 */
+#assistive-touch-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(30, 41, 59, 0.85);
+    /* 深色半透明 */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 2147483647;
+    /* 確保在所有網頁元素最上層 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.3s ease;
+    user-select: none;
+    opacity: 0.6;
+    /* 預設較透明，避免干擾 */
+}
+
+#assistive-touch-btn:hover {
+    transform: scale(1.05);
+    background-color: rgba(30, 41, 59, 1);
+    opacity: 1;
+}
+
+#assistive-touch-btn:active {
+    transform: scale(0.95);
+}
+
+/* 內部的小圖示 (簡單的白色同心圓，模仿 iOS 輔助觸控) */
+.at-inner-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.at-core-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* 提示紅點 (當有即將到來的任務時顯示) */
+.at-notification-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 14px;
+    height: 14px;
+    background-color: #ef4444;
+    /* 紅色 */
+    border: 2px solid #1e293b;
+    border-radius: 50%;
+    display: none;
+    /* 預設隱藏 */
+}
+
+.at-notification-badge.active {
+    display: block;
+    animation: at-pulse 2s infinite;
+}
+
+@keyframes at-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+/* 拖曳狀態 */
+#assistive-touch-btn.is-dragging {
+    opacity: 0.9;
+    transition: none;
+    /* 拖曳時關閉動畫以保持順暢 */
+    cursor: grabbing !important;
+}
